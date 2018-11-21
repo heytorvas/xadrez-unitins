@@ -1,4 +1,4 @@
-ppackage pecas;
+package pecas;
 
 import tabuleiro.Peca;
 import tabuleiro.Posicao;
