@@ -1,7 +1,6 @@
 package pecas;
 
 import tabuleiro.Peca;
-import tabuleiro.Posicao;
 
 public class Rei extends Peca
 {

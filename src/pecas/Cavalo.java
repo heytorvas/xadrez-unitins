@@ -1,67 +1,83 @@
 package pecas;
 
-import tabuleiro.Peca;
-import tabuleiro.Posicao;
+import pecas.Peca;
+import pecas.Posicao;
+import tabuleiro.Tabuleiro;
 
 public class Cavalo extends Peca
 {
-
-    public Cavalo()
+    @Override
+    public boolean mover(Posicao posicao)
     {
-    }
+        Peca restricoesCavalo[][] = new Peca[8][8];
+        Cavalo cavalo = new Cavalo();
+        restricoesCavalo = tabuleiro.getMatrizPeca();
+        Posicao posicaoAtual = new Posicao();
 
-    private boolean podeMover(Posicao posicao)
-    {
-        Peca p = (Peca)getPosicao().peca(posicao);
-        return p == null || p.isCorPreta() != isCorPreta();
-    }
+        // determinar posicao atual da peca
+        //-------------------------------------------------------------
+        for (int linha = 0; linha < restricoesCavalo.length; linha++)
+        {
+            for (int coluna = 0; coluna < restricoesCavalo.length; coluna++)
+            {
+                if (posicao.getLinha() + posicao.getColuna() == linha + coluna
+                        || posicao.getColuna() - posicao.getLinha() == coluna - linha
+                        || posicao.getColuna() == coluna
+                        || posicao.getLinha() == linha)
+                {
+                    if (restricoesCavalo[linha][coluna] instanceof Cavalo)
+                    {
+                        posicaoAtual.setLinha(linha);
+                        posicaoAtual.setColuna(coluna);
+                    }
+                }
+            }
+        }
+        //-------------------------------------------------------------
 
-    public boolean[][] movimentosPossiveis()
-    {
-        Posicao p = new Posicao(0, 0);
-        boolean[][] mat = new boolean[p.getLinha()][p.getColuna()];
-
-        p.setValores(p.getLinha() - 1, p.getColuna() - 2);
-        if(p.existePosicao(p) && podeMover(p))
+        // verificacao da cor da peca
+        if (restricoesCavalo[posicao.getLinha()][posicao.getColuna()] instanceof Peca)
         {
-            mat[p.getLinha()][p.getColuna()] = true;
-        }
-        p.setValores(p.getLinha() - 2 , p.getColuna() - 1);
-        if(p.existePosicao(p) && podeMover(p))
-        {
-            mat[p.getLinha()][p.getColuna()] = true;
-        }
-        p.setValores(p.getLinha() - 2, p.getColuna() + 1);
-        if(p.existePosicao(p) && podeMover(p))
-        {
-            mat[p.getLinha()][p.getColuna()] = true;
-        }
-        p.setValores(p.getLinha() - 1, p.getColuna() + 2);
-        if(p.existePosicao(p) && podeMover(p))
-        {
-            mat[p.getLinha()][p.getColuna()] = true;
-        }
-        p.setValores(p.getLinha() + 1, p.getColuna() + 2);
-        if(p.existePosicao(p) && podeMover(p))
-        {
-            mat[p.getLinha()][p.getColuna()] = true;
-        }
-        p.setValores(p.getLinha() + 2, p.getColuna() + 1);
-        if(p.existePosicao(p) && podeMover(p))
-        {
-            mat[p.getLinha()][p.getColuna()] = true;
-        }
-        p.setValores(p.getLinha() + 2, p.getColuna() - 1);
-        if(p.existePosicao(p) && podeMover(p))
-        {
-            mat[p.getLinha()][p.getColuna()] = true;
-        }
-        p.setValores(p.getLinha() + 1, p.getColuna() - 2);
-        if(p.existePosicao(p) && podeMover(p))
-        {
-            mat[p.getLinha()][p.getColuna()] = true;
+            if (cavalo.isCorPreta() != restricoesCavalo[posicao.getLinha()][posicao.getColuna()].isCorPreta())
+            {
+                // se houver uma peca de cor diferente da rainha o codigo continua na execucao com as proximas verificacoes
+            }
+            else
+                return false;
+                // se a peca na nova posicao for da mesma cor que o cavalo a jogada sera invalida impedindo a movimentacao da peca
         }
 
-        return mat;
+        // movimentacao superior e inferior
+        if (posicaoAtual.getLinha() < posicao.getLinha() || posicaoAtual.getLinha() > posicao.getLinha())
+        {
+            if (posicao.getLinha() - posicaoAtual.getLinha() == 2 || posicaoAtual.getLinha() - posicao.getLinha() == 2)
+            {
+                if (posicao.getColuna() == posicaoAtual.getColuna() - 1 || posicao.getColuna() == posicaoAtual.getColuna() + 1 )
+                {
+                    restricoesCavalo[posicao.getLinha()][posicao.getColuna()] = cavalo;
+                    posicaoAtual = posicao;
+                    tabuleiro.setMatrizPeca(restricoesCavalo);
+                    restricoesCavalo[posicaoAtual.getLinha()][posicaoAtual.getColuna()] = null;
+                    return true;
+                }
+            }
+        }
+
+        // movimentacao para os lados
+        if (posicaoAtual.getColuna() < posicao.getColuna() || posicaoAtual.getColuna() > posicao.getColuna())
+        {
+            if (posicao.getColuna() - posicaoAtual.getColuna() == 2 || posicaoAtual.getColuna() - posicao.getColuna() == 2)
+            {
+                if (posicao.getLinha() == posicaoAtual.getLinha() - 1 || posicao.getLinha() == posicaoAtual.getLinha() + 1 )
+                {
+                    restricoesCavalo[posicao.getLinha()][posicao.getColuna()] = cavalo;
+                    posicaoAtual = posicao;
+                    tabuleiro.setMatrizPeca(restricoesCavalo);
+                    restricoesCavalo[posicaoAtual.getLinha()][posicaoAtual.getColuna()] = null;
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
