@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="da8aaed5-bc76-4475-a5da-0c40f9720156" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pecas/Cavalo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pecas/Cavalo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pecas/Rei.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pecas/Rei.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tabuleiro/Peca.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tabuleiro/Posicao.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -65,11 +61,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="java" value="844" />
+          <entry key="txt" value="60" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="844" />
+          <entry key="PLAIN_TEXT" value="60" />
         </counts>
       </usages-collector>
     </session>
@@ -133,8 +131,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pecas/Cavalo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="27" column="70" lean-forward="true" selection-start-line="27" selection-start-column="70" selection-end-line="27" selection-end-column="70" />
+            <state relative-caret-position="189">
+              <caret line="25" column="54" selection-start-line="25" selection-start-column="54" selection-end-line="25" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -177,8 +175,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="257" />
-    <option name="y" value="2" />
+    <option name="x" value="-116" />
+    <option name="y" value="94" />
     <option name="width" value="1126" />
     <option name="height" value="788" />
   </component>
@@ -224,7 +222,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542836821047" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542837046457" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/model/model/Dama.java" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -252,16 +250,23 @@
       <option name="presentableId" value="Default" />
       <updated>1542154313853</updated>
       <workItem from="1542154320819" duration="6420000" />
-      <workItem from="1542828367739" duration="7312000" />
+      <workItem from="1542828367739" duration="7580000" />
     </task>
+    <task id="LOCAL-00001" summary="Atualizacao das Pecas Designadas">
+      <created>1542836892987</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1542836892987</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13732000" />
+    <option name="totallyTimeSpent" value="14000000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12934947" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -326,6 +331,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Atualizacao das Pecas Designadas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Atualizacao das Pecas Designadas" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/tabuleiro/Cor.java" />
@@ -442,8 +451,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pecas/Cavalo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="27" column="70" lean-forward="true" selection-start-line="27" selection-start-column="70" selection-end-line="27" selection-end-column="70" />
+        <state relative-caret-position="189">
+          <caret line="25" column="54" selection-start-line="25" selection-start-column="54" selection-end-line="25" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
