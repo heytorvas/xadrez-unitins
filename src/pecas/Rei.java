@@ -2,6 +2,7 @@ package pecas;
 
 public class Rei extends Peca
 {
+    // metodo sobrescrito
     @Override
     public boolean mover(Posicao posicao)
     {
@@ -10,17 +11,26 @@ public class Rei extends Peca
         restricoesRei = tabuleiro.getMatrizPeca();
         Posicao posicaoAtual = new Posicao();
 
+        // determinar posicao atual da peca
+        //-------------------------------------------------------------
         for (int linha = 0; linha < restricoesRei.length; linha++)
         {
             for (int coluna = 0; coluna < restricoesRei.length; coluna++)
             {
                 if (restricoesRei[linha][coluna] instanceof Rei)
                 {
-                    posicaoAtual.setLinha(linha);
-                    posicaoAtual.setColuna(coluna);
+                    if (posicao.getColuna() == coluna + 1
+                            || posicao.getColuna() == coluna - 1
+                            || posicao.getLinha() == linha + 1
+                            || posicao.getLinha() == linha - 1)
+                    {
+                        posicaoAtual.setLinha(linha);
+                        posicaoAtual.setColuna(coluna);
+                    }
                 }
             }
         }
+        //-------------------------------------------------------------
 
         if (restricoesRei[posicao.getLinha()][posicao.getColuna()] instanceof Peca)
         {
@@ -33,7 +43,7 @@ public class Rei extends Peca
 
         }
 
-        // movimenta rei nas diagonais principais e secundaria
+        // movimenta rei nas diagonais principais e secundarias
         if ((posicao.getLinha() == posicaoAtual.getLinha() + 1
                         || posicao.getLinha() == posicaoAtual.getLinha() - 1)
                         && (posicao.getColuna() == posicaoAtual.getColuna() + 1

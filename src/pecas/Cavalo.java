@@ -1,11 +1,8 @@
 package pecas;
 
-import pecas.Peca;
-import pecas.Posicao;
-import tabuleiro.Tabuleiro;
-
 public class Cavalo extends Peca
 {
+    // metodo sobrescrito
     @Override
     public boolean mover(Posicao posicao)
     {
@@ -20,10 +17,10 @@ public class Cavalo extends Peca
         {
             for (int coluna = 0; coluna < restricoesCavalo.length; coluna++)
             {
-                if (posicao.getLinha() + posicao.getColuna() == linha + coluna
-                        || posicao.getColuna() - posicao.getLinha() == coluna - linha
-                        || posicao.getColuna() == coluna
-                        || posicao.getLinha() == linha)
+                if ((posicao.getColuna() == coluna + 1 ||
+                            posicao.getColuna() == coluna - 1)
+                            && (posicao.getLinha() == linha + 2
+                            || posicao.getLinha() == linha - 2))
                 {
                     if (restricoesCavalo[linha][coluna] instanceof Cavalo)
                     {
