@@ -26,8 +26,16 @@ public class Cavalo extends Peca
                     {
                         posicaoAtual.setLinha(linha);
                         posicaoAtual.setColuna(coluna);
+
+                        // encerra o loop quando acha posicao inicial
+                        linha = 8;
+                        coluna = 8;
                     }
                 }
+            }
+            if (linha == 7)
+            {
+                return false;
             }
         }
         //-------------------------------------------------------------
