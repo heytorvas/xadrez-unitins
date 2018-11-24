@@ -1,5 +1,7 @@
 package pecas;
 
+import tabuleiro.Tabuleiro;
+
 public class Rei extends Peca
 {
     // metodo sobrescrito
@@ -7,9 +9,9 @@ public class Rei extends Peca
     public boolean mover(Posicao posicao)
     {
         Peca restricoesRei[][] = new Peca[8][8];
-        Peca rei = new Rei();
-        restricoesRei = tabuleiro.getMatrizPeca();
-        Posicao posicaoAtual = new Posicao();
+        Rei rei = new Rei();
+        restricoesRei = Tabuleiro.getMatrizPeca();
+        Posicao posicaoAtual = new Posicao(0, 0);
 
         // determinar posicao atual da peca
         //-------------------------------------------------------------
@@ -19,15 +21,13 @@ public class Rei extends Peca
             {
                 if (restricoesRei[linha][coluna] instanceof Rei)
                 {
-                    if (posicao.getColuna() == coluna + 1
-                            || posicao.getColuna() == coluna - 1
-                            || posicao.getLinha() == linha + 1
-                            || posicao.getLinha() == linha - 1)
+                    if (posicao.getColuna() == coluna + 1 || posicao.getColuna() == coluna - 1
+                            || posicao.getLinha() == linha + 1 || posicao.getLinha() == linha - 1)
                     {
                         posicaoAtual.setLinha(linha);
                         posicaoAtual.setColuna(coluna);
 
-                        // encerra o loop quando acha posicao inicial
+                        //encerra o loop quando acha posicao inicial
                         linha = 8;
                         coluna = 8;
                     }
@@ -40,51 +40,48 @@ public class Rei extends Peca
         }
         //-------------------------------------------------------------
 
+        // verificacao da cor da peca
         if (restricoesRei[posicao.getLinha()][posicao.getColuna()] instanceof Peca)
         {
             if (rei.isCorPreta() != restricoesRei[posicao.getLinha()][posicao.getColuna()].isCorPreta())
             {
-                // se houver uma peca de cor diferente da rainha o codigo continua na execucao com as proximas verificacoes
-            } else
+                // se houver uma peca de cor diferente do rei, o codigo continua na execucao com as proximas verificacoes
+            }
+            else
+            {
                 return false;
-            // se a peca na nova posicao for da mesma cor que o cavalo a jogada sera invalida impedindo a movimentacao da peca
-
+                // se a peca na nova posicao for da mesma cor que o rei a jogada sera invalida impedindo a movimentacao da peca
+            }
         }
 
-        // movimenta rei nas diagonais principais e secundarias
-        if ((posicao.getLinha() == posicaoAtual.getLinha() + 1
-                        || posicao.getLinha() == posicaoAtual.getLinha() - 1)
-                        && (posicao.getColuna() == posicaoAtual.getColuna() + 1
-                        || posicao.getColuna() == posicaoAtual.getColuna() - 1))
+        // movimenta o rei nas diagonais principais e secundarias
+        if ((posicao.getLinha() == posicaoAtual.getLinha() + 1 || posicao.getLinha() == posicaoAtual.getLinha() - 1)
+                    && (posicao.getColuna() == posicaoAtual.getColuna() + 1
+                    || posicao.getColuna() == posicaoAtual.getColuna() - 1))
         {
             restricoesRei[posicao.getLinha()][posicao.getColuna()] = rei;
-            posicaoAtual = posicao;
-            tabuleiro.setMatrizPeca(restricoesRei);
             restricoesRei[posicaoAtual.getLinha()][posicaoAtual.getColuna()] = null;
+            Tabuleiro.setMatrizPeca(restricoesRei);
             return true;
         }
 
         // movimenta rei na horizontal
-        if (posicaoAtual.getLinha() == posicao.getLinha()
-                        && (posicao.getColuna() == posicaoAtual.getColuna() + 1
-                        || posicao.getColuna() == posicaoAtual.getColuna() - 1))
+        if (posicaoAtual.getLinha() == posicao.getLinha() && (posicao.getColuna() == posicaoAtual.getColuna() + 1
+                    || posicao.getColuna() == posicaoAtual.getColuna() - 1))
         {
             restricoesRei[posicao.getLinha()][posicao.getColuna()] = rei;
-            posicaoAtual = posicao;
-            tabuleiro.setMatrizPeca(restricoesRei);
             restricoesRei[posicaoAtual.getLinha()][posicaoAtual.getColuna()] = null;
+            Tabuleiro.setMatrizPeca(restricoesRei);
             return true;
         }
 
         // movimenta rei na vertical
-        if (posicaoAtual.getColuna() == posicao.getColuna()
-                        && (posicao.getLinha() == posicaoAtual.getLinha() + 1
-                        || posicao.getLinha() == posicaoAtual.getLinha() - 1))
+        if (posicaoAtual.getColuna() == posicao.getColuna() && (posicao.getLinha() == posicaoAtual.getLinha() + 1
+                    || posicao.getLinha() == posicaoAtual.getLinha() - 1))
         {
             restricoesRei[posicao.getLinha()][posicao.getColuna()] = rei;
-            posicaoAtual = posicao;
-            tabuleiro.setMatrizPeca(restricoesRei);
             restricoesRei[posicaoAtual.getLinha()][posicaoAtual.getColuna()] = null;
+            Tabuleiro.setMatrizPeca(restricoesRei);
             return true;
         }
         return false;
